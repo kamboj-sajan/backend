@@ -30,15 +30,7 @@ app.use(bodyParser.json());
 
 const SECRET_KEY = "TOPSECRETWORD";
 
-app.get('/shop', async (req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM shops LIMIT 1');
-    res.json(result.rows[0]);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
-  }
-});
+
 
 app.get('/reviews', async (req, res) => {
   try {
