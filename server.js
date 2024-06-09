@@ -18,8 +18,12 @@ const pool = new Pool({
     password: "Nova258@",
     port: 5432,
 });
+const corsOptions = {
+  origin: 'https://mocha-delight.vercel.app', 
+  optionsSuccessStatus: 200
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use(bodyParser.json());
