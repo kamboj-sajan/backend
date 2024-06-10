@@ -92,7 +92,7 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-// New user login endpoint
+
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
