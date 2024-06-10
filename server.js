@@ -53,6 +53,18 @@ app.post('/reviews', async (req, res) => {
       console.error(err.message);
   }
 });
+app.post('/contact', async (req, res) => {
+  const { firstName, lastName, email, phone, subject, message, numberOfPeople } = req.body;
+  try {
+    const query = 'INSERT INTO contacts (first_name, last_name, email, phone, subject, message, number_of_people) VALUES ($1, $2, $3, $4, $5, $6, $7)';
+    const values = [firstName, lastName, email, phone, subject, message, numberOfPeople];
+    await pool.query(query, values);
+    res.status(200).send('Message received');
+  } catch (error) {
+    console.error('Error saving contact message', error);
+    res.status(500).send('Server error');
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
